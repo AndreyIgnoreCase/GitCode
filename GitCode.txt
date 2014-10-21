@@ -1,0 +1,145 @@
+
+Comandos de rastreamento e gravação{
+	
+	git add . = rastreia todos os arquivos do diretorio;
+	git add "diretorio" = rastreia todos os arquivos de um unico diretorio;
+
+	Ignorar arquivos para rastreio{
+		criar arquivo .gitignore
+		inserir o conteudo a ser ignorado neste arquivo
+		rastrear o arquivo .gitignore
+	}
+
+}
+
+
+Fluxo Padrão{
+	Directory ~~> Stage ~~> Repository
+
+	Directory = Arquivos ainda não rastreados(Criados/Editados na pasta de diretorio);
+	Stage = Arquivos que já foram rastreados mas não foram gravados(git add file.ext);
+	Repositorio = Arquivos já gravados(git commit -m "Descição da ação realizada");
+}
+
+//parametro -m = utilizado para colocar a descrição do commit;
+//parametro -a = utilizado junto ao commit para rastrear o arquivo e commitalo em seguida +
+					apenas se o arquivo já existir. (ex: git commit -am "Inserindo titulo");
+
+Verificar Historico de Repositorio{
+
+	git log = Mostra todo o historico das mudanças gravadas no repositorio;
+
+	git log -n 3 = mostra o historio das ultimas 3 alterações;
+
+	git log --oneline = mostra o resumo das alterações em apenas uma linha;
+
+	git log -n 1 --oneline = (log = retorna as modificaçoes ,  -n 1  = retorna apenas o ultimo commit ,  --oneline = retorna tudo em uma linha);
+
+	git log --stat = Mostra o resumo dos arquivos alterados com o numero de linhas adicionadas e removidas;
+
+	git diff = mostra a diferença entre o arquivo alterado e o ultimo commitado. Pode ser usado para comparar 2 commits;
+
+	git diff --staged = mostra as diferenças entre os arquivos da área de stage;
+
+
+	git status = lista os arquivos modificados e o conteudo da área de stage;
+
+	git diff mostra delahers que foram modificados. Pode comparar dois commits;
+}
+
+Remover Arquivos do Repositório{
+	
+	git rm arquivo.ext = remove arquivos e adiciona na stage;
+
+}
+
+Renomear e Mover Arquivos{
+	
+	git mv nomeantigo.ext nomenovo.ext = renomeia o arquivo;
+
+	git mv arquivo.ext dir/arquivo.ext = move o arquivo para o diretorio;
+
+}
+
+Desfazer Mudancas{
+	
+	Nao Rastreadas{
+
+		git checkout -- arquivo.ext
+
+	}
+
+	Ja Rastreadas{
+
+		git reset -- arquivo.ext = retira apenas este arquivo da stage, mas não desfaz as mudanças;
+		
+		git reset = retira todos os arquivos da Stage
+		
+		git reset --hard = retira da area de stage e desfaz as alterações. Deixa como no ultimo commit de cada arquivo.
+	}
+
+	Ja Commitadas{
+
+		git revert --no-edit HEAD = Desfaz as alterações no ultimo arquivo commitado;
+
+		--no-edit = evita que o arquivo em questão seja aberto para edição;
+
+		git reset --hard HEAD(ou o codigo do commit);
+	}
+
+}
+
+Trabalhar Com Servidor Git Remoto{
+	
+	Criar Repositorio Remoto{
+		Criar a pasta no servidor;
+		git init --bare pastacriada.git;
+	}
+
+	Adicionar Repositorio Remoto{
+	
+		git remote add servidor file://192.168.1.1/d/repositorio/pastacriada.git =  adiciona ao git o acesso ao repositorio remoto no endereco citado;
+
+		git remote -v = exibe a url e as urls para leitura(fetch) e escrita(push);
+
+	}
+
+	Alterar e Remover Repositorio Remoto{
+
+		git remote rename nomeatualserv nomenovoserv;
+
+		git remote set-url servidor file://192.168.1.X/d/repositorio/pastacriada.git = 
+		altera a url do repositorio remoto;
+
+	}
+
+	Enviar Commits Para Repositorio Remoto{
+
+		git push servidor master = envia commits locais para o servidor;
+
+	}
+
+	Clonar Repositorio Remoto{
+
+		git clone file://192.168.1.1/d/repositorios/pastacriada.git = clona o repositorio da url para a maquina local;
+
+	}
+
+	Sincronizar Repositorio Local{
+
+		git pull servidor master = sincroniza o repositorio local com o servidor;
+
+	}
+
+	Protocolos Suportados Git{
+
+		Local = Servidor na mesma rede - file://
+		SSH = usuario@servidor:/d/repositorio/pastacriada.git
+		Git = git://192.168.1.1/d/repositorio/pastacriada.git
+		HTTP/HTTPS = http://192.168.1.1/d/repositorio/pastacriada.git
+
+
+	}
+
+
+}
