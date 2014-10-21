@@ -1,4 +1,26 @@
 
+Criar Repositorio Local{
+	
+	Ir até a pasta
+	git init;
+}
+
+Apontar Projeto Para GitHub{
+	
+	git remote add origins http://github.com/usuario/repositorio.git
+}
+
+Enviando Alteracoes Para GitHub{
+	
+	git push origin master;
+
+}
+
+Clonando Projeto GitHub{
+	
+	git clone https://github.com/ususario/repositorio.git
+}
+
 Comandos de rastreamento e gravação{
 	
 	git add . = rastreia todos os arquivos do diretorio;
