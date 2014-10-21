@@ -165,3 +165,50 @@ Trabalhar Com Servidor Git Remoto{
 
 
 }
+
+Visualizar as Branchs{
+	
+	git branch -v
+
+}
+
+Criar uma Branch{
+	
+	git branch design = cria nova branch de nome design
+}
+
+Trocar de Branch{
+	
+	git checkout design = troca da branch master para a design
+}
+
+Cria a Branch e ja troca{
+	
+	git checkout -b loja
+
+}
+
+Deletando uma Branch{
+	impossivel deletar branchs em uso;
+
+	git branch -d loja = deleta a Branch loja caso nao tenha sido commitada
+
+	git branch -D loja = deleta a Branch mesmo tendo sido commitada
+}
+
+Verificando Branchs Ainda Nao Mescladas{
+	
+	git branch --no-merged 
+}
+
+Mesclar Alteracoes Com Merge{
+	
+	git merge design -m "Mesclando com a branch design"
+
+}
+
+Maneira de Mesclar Branchs pra Simplificar Codigo{
+	
+	git rebase design
+}
+
