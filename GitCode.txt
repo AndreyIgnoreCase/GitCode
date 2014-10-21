@@ -212,3 +212,8 @@ Maneira de Mesclar Branchs pra Simplificar Codigo{
 	git rebase design
 }
 
+Verificar Branchs Remotas{
+	
+	git branch -r
+	git branch -a (verifica todas as branchs)
+}
